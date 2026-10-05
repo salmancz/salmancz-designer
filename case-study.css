@@ -1,0 +1,202 @@
+/* ============================================================
+   Case study detail pages — shares tokens + nav from styles.css
+   ============================================================ */
+
+.cs-main { position: relative; z-index: 2; }
+
+/* --- hero --- */
+.cs-hero {
+  padding: 9rem var(--pad) 0; max-width: var(--maxw); margin: 0 auto;
+}
+.cs-breadcrumb {
+  font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted); display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;
+  margin-bottom: 1.2rem;
+}
+.cs-breadcrumb a { color: var(--muted); transition: color 0.3s; }
+.cs-breadcrumb a:hover { color: var(--gold); }
+.cs-breadcrumb .sep { color: var(--faint); }
+.cs-breadcrumb .current { color: var(--ink-soft); }
+
+.cs-title {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(2.5rem, 1.4rem + 5vw, 6.2rem); line-height: 0.98;
+  letter-spacing: -0.03em; margin: 1.2rem 0 0; max-width: 16ch;
+}
+.cs-title em { font-style: italic; color: var(--gold); font-variation-settings: "opsz" 144; }
+
+.cs-lede {
+  color: var(--ink-soft); font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem);
+  max-width: 60ch; margin-top: 1.6rem; line-height: 1.65;
+}
+
+.cs-actions {
+  margin-top: 1.8rem; display: flex; flex-wrap: wrap; gap: 0.85rem;
+}
+
+.cs-meta {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+  margin: clamp(2.2rem, 5vw, 3.2rem) 0 clamp(2rem, 4vw, 3rem);
+  padding-top: 2rem; border-top: 1px solid var(--line);
+}
+.cs-meta__k {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.5rem;
+}
+.cs-meta__v { color: var(--ink-soft); font-size: 0.95rem; }
+
+.cs-cover {
+  width: 100%; border-radius: 6px; overflow: hidden;
+  border: 1px solid var(--line-soft); background: var(--surface);
+}
+.cs-cover img {
+  width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+  cursor: zoom-in; transition: transform 0.8s var(--ease);
+}
+.cs-cover img:hover { transform: scale(1.015); }
+
+/* --- body sections --- */
+.cs-body { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+.cs-section {
+  display: grid; grid-template-columns: 0.9fr 1.4fr; gap: clamp(1.5rem, 5vw, 5rem);
+  padding: clamp(3.5rem, 7vw, 6rem) 0; border-top: 1px solid var(--line);
+  align-items: start;
+}
+.cs-section__label {
+  font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--gold);
+}
+.cs-section__h {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.7rem, 1.1rem + 2vw, 2.8rem); line-height: 1.08;
+  letter-spacing: -0.015em; margin-top: 0.8rem; max-width: 20ch;
+}
+.cs-section__body p { color: var(--ink-soft); font-size: 1.06rem; margin-bottom: 1.2rem; max-width: 62ch; line-height: 1.7; }
+.cs-section__body p:last-child { margin-bottom: 0; }
+
+.cs-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; }
+.cs-tags li {
+  font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft);
+  border: 1px solid var(--line); border-radius: 100px; padding: 0.45rem 0.95rem;
+  background: var(--bg-2);
+}
+
+/* --- figures / galleries (full width under sections) --- */
+.cs-figure, .cs-grid { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+.cs-figure { padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.cs-plate { display: flex; flex-direction: column; }
+.cs-figure img, .cs-grid img {
+  width: 100%; border-radius: 6px; border: 1px solid var(--line-soft);
+  background: var(--surface); object-fit: cover;
+  transition: transform 0.6s var(--ease), filter 0.4s, border-color 0.3s;
+  filter: saturate(0.96); cursor: zoom-in;
+}
+.cs-figure img:hover, .cs-grid img:hover {
+  filter: saturate(1.06); border-color: rgba(201, 162, 75, 0.45);
+}
+.cs-figure figcaption, .cs-cap {
+  font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
+  letter-spacing: 0.04em; margin-top: 0.65rem;
+}
+.cs-grid { display: grid; gap: clamp(0.85rem, 1.8vw, 1.4rem); padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.cs-grid--1 { grid-template-columns: 1fr; }
+.cs-grid--2 { grid-template-columns: 1fr 1fr; }
+.cs-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.cs-grid--1 img { aspect-ratio: 16 / 10; }
+.cs-grid--2 img { aspect-ratio: 16 / 11; }
+.cs-grid--3 img { aspect-ratio: 4 / 3; }
+.cs-figure--wide img { aspect-ratio: 16 / 9; }
+.cs-figure--tall img { aspect-ratio: 4 / 3; }
+
+/* --- complete visual archive strip --- */
+.cs-archive {
+  max-width: var(--maxw); margin: 2rem auto 0; padding: clamp(3rem, 6vw, 5rem) var(--pad);
+  border-top: 1px solid var(--line);
+}
+.cs-ArchiveTitle {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.5rem, 1rem + 1.6vw, 2.3rem); line-height: 1.15;
+  margin-top: 0.6rem; margin-bottom: 2rem; color: var(--ink);
+}
+.cs-thumbs {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.cs-thumb {
+  position: relative; display: block; width: 100%; padding: 0;
+  background: var(--surface); border: 1px solid var(--line-soft);
+  border-radius: 6px; overflow: hidden; cursor: zoom-in;
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.cs-thumb:hover {
+  border-color: var(--gold); transform: translateY(-3px);
+}
+.cs-thumb img {
+  width: 100%; aspect-ratio: 16 / 11; object-fit: cover; display: block;
+}
+.cs-thumb span {
+  position: absolute; top: 0.55rem; left: 0.55rem;
+  background: rgba(12, 11, 10, 0.82); backdrop-filter: blur(4px);
+  border: 1px solid rgba(201, 162, 75, 0.35); border-radius: 4px;
+  padding: 0.15rem 0.45rem; font-family: var(--mono); font-size: 0.68rem;
+  color: var(--gold);
+}
+
+/* --- results --- */
+.cs-results {
+  max-width: var(--maxw); margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) var(--pad);
+  border-top: 1px solid var(--line);
+  display: grid; grid-template-columns: 0.9fr 1.4fr; gap: clamp(1.5rem, 5vw, 5rem); align-items: center;
+}
+.cs-results__nums { display: flex; flex-wrap: wrap; gap: clamp(2rem, 4vw, 3.5rem); }
+.cs-results__nums .stat__num { font-size: clamp(2rem, 1.3rem + 3vw, 3.6rem); color: var(--gold); }
+
+/* --- prev / next project --- */
+.cs-next {
+  border-top: 1px solid var(--line); margin-top: 2rem;
+}
+.cs-next--split {
+  display: grid; grid-template-columns: 1fr 1fr;
+  max-width: var(--maxw); margin: 2rem auto 0;
+}
+.cs-next__link {
+  display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
+  padding: clamp(2.2rem, 5vw, 4rem) var(--pad);
+  transition: background 0.35s var(--ease);
+}
+.cs-next__link--prev { border-right: 1px solid var(--line); }
+.cs-next__link--next { text-align: right; justify-content: flex-end; }
+.cs-next__link--next > span:first-child { margin-right: auto; text-align: left; }
+.cs-next__link:hover { background: var(--bg-2); }
+.cs-next__k { display: block; font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+.cs-next__name {
+  display: block; font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.5rem, 1rem + 2.4vw, 3rem);
+  line-height: 1.05; letter-spacing: -0.02em; margin-top: 0.45rem;
+}
+.cs-next__arrow { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 3.2rem); color: var(--gold); }
+
+/* --- back / cta strip --- */
+.cs-cta {
+  text-align: center; padding: clamp(3.5rem, 8vw, 6rem) var(--pad);
+  border-top: 1px solid var(--line);
+}
+.cs-cta__title {
+  font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 1.2rem + 3vw, 3.5rem);
+  line-height: 1.02; letter-spacing: -0.02em; margin-bottom: 1.8rem;
+}
+.cs-cta__btns {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .cs-meta { grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+  .cs-section { grid-template-columns: 1fr; gap: 1.2rem; }
+  .cs-results { grid-template-columns: 1fr; gap: 1.5rem; }
+  .cs-next--split { grid-template-columns: 1fr; }
+  .cs-next__link--prev { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 620px) {
+  .cs-grid--2, .cs-grid--3 { grid-template-columns: 1fr; }
+  .cs-meta { grid-template-columns: 1fr 1fr; }
+}
