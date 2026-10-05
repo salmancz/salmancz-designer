@@ -163,29 +163,17 @@ if (lbTriggers.length) {
   });
 }
 
-// --- custom cursor (pointer devices only, motion-safe) ---
-const fine = window.matchMedia("(pointer: fine)").matches;
-const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-if (fine && !reduce) {
-  const cur = document.querySelector(".cursor");
-  if (cur) {
-    let x = 0, y = 0, cx = 0, cy = 0;
-    window.addEventListener("mousemove", (e) => {
-      x = e.clientX; y = e.clientY;
-      cur.style.opacity = "1";
-    });
-    const loop = () => {
-      cx += (x - cx) * 0.18;
-      cy += (y - cy) * 0.18;
-      cur.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
-      requestAnimationFrame(loop);
-    };
-    loop();
-    document
-      .querySelectorAll("a, button, .project__cover, .work-card, [data-lightbox], .cs-thumb")
-      .forEach((el) => {
-        el.addEventListener("mouseenter", () => cur.classList.add("is-hover"));
-        el.addEventListener("mouseleave", () => cur.classList.remove("is-hover"));
-      });
-  }
-}
+// --- full-box click navigation on all project & work cards ---
+document.querySelectorAll(".work-card, .project").forEach((box) => {
+  box.style.cursor = "pointer";
+  box.addEventListener("click", (e) => {
+    // Allow explicit external links (e.g. Figma prototype) or buttons to handle their own click
+    const closestLink = e.target.closest("a, button");
+    if (closestLink) return;
+    const primaryLink = box.querySelector('a[href^="work/"]');
+    if (primaryLink && primaryLink.href) {
+      window.location.href = primaryLink.href;
+    }
+  });
+});
+
